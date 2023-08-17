@@ -1,4 +1,5 @@
 import { Book } from "../models/book";
+import { getBooks } from "../services/books";
 
 export const populateDummyData = async () => {
 	// Populate environment with some dummy data in dev
@@ -17,7 +18,27 @@ export const populateDummyData = async () => {
 		description:
 			"Before being born, each person must visit the magical Shop Before Life, where they choose what kind of person they will become down on Earth...",
 	});
-	const bookCount = (await Book.findAll()).length;
+	await Book.create({
+		bookId: 3,
+		title: "The Great Expectation",
+		author: "Charles Dickens",
+		description:"A Nice story..",
+	});
+	await Book.create({
+		bookId: 4,
+		title: "The Tale of Two cities",
+		author: "Charles Dickens",
+		description:"A Nice story..",
+	});
+	await Book.create({
+		bookId: 5,
+		title: "Christmas Carol",
+		author: "Charles Dickens",
+		description:"A Christmas story..",
+	});
+
+   
+   const bookCount = (await Book.findAll()).length;
 	console.log(
 		`📚 ${bookCount} book${bookCount !== 1 ? "s" : ""} added to table`
 	);

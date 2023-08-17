@@ -35,3 +35,16 @@ export const updateBook = async (req: Request, res: Response) => {
 	const book = await bookService.updateBook(bookId, bookUpdateData);
 	res.status(204).json(book);
 };
+
+
+//user story 5 - delete Book by id solution
+export const deleteBook = async (req: Request, res: Response) => {
+	const bookDeleteData = req.body;
+	const bookId = Number.parseInt(req.params.bookId);
+
+	const bookDeleted = await bookService.deletebook(bookId);
+	if (bookDeleted)
+		res.status(200).json({success: true, message: `Book ${bookId} deleted successfully`});
+	else
+		res.status(404).json({success: false, message: `Book ${bookId} does not exist`});
+};
