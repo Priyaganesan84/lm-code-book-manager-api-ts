@@ -39,7 +39,6 @@ export const updateBook = async (req: Request, res: Response) => {
 
 //user story 5 - delete Book by id solution
 export const deleteBook = async (req: Request, res: Response) => {
-	const bookDeleteData = req.body;
 	const bookId = Number.parseInt(req.params.bookId);
 
 	const bookDeleted = await bookService.deletebook(bookId);
